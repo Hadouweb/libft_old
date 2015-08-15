@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void    *ft_memset(void *s, int c, size_t n)
+void    ft_bzero(void *s, size_t n)
 {
     unsigned char   *str;
     size_t          i;
@@ -13,11 +13,10 @@ void    *ft_memset(void *s, int c, size_t n)
         i = 0;
         while (i < n)
         {
-            str[i] = c;
+            str[i] = '\0';
             i++;
         }
     }
-    return ((void*)str);
 }
 
 int     main(void)
@@ -25,7 +24,7 @@ int     main(void)
     char    *str;
 
     str = (char *)malloc(41 * sizeof(char));
-    str = ft_memset(str, 65, 40);
+    ft_bzero(str, 30);
     printf("ok %s", str);
     return (0);
 }
