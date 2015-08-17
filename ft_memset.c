@@ -1,31 +1,31 @@
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/23 16:59:03 by mel-mouk          #+#    #+#             */
+/*   Updated: 2014/12/23 17:03:02 by mel-mouk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    *ft_memset(void *s, int c, size_t n)
+#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
 {
-    unsigned char   *str;
-    size_t          i;
+	size_t	i;
+	char	*str;
 
-    str = (unsigned char*)s;
-    if (s)
-    {
-        i = 0;
-        while (i < n)
-        {
-            str[i] = c;
-            i++;
-        }
-    }
-    return ((void*)str);
-}
-
-int     main(void)
-{
-    char    *str;
-
-    str = (char *)malloc(41 * sizeof(char));
-    str = ft_memset(str, 65, 40);
-    printf("ok %s", str);
-    return (0);
+	if (s)
+	{
+		str = (char*)s;
+		i = 0;
+		while (i < n)
+		{
+			str[i] = c;
+			i++;
+		}
+	}
+	return ((void*)str);
 }

@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-mouk <mel-mouk@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/23 17:45:18 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/23 17:47:51 by mel-mouk         ###   ########.fr       */
+/*   Created: 2014/12/24 19:04:34 by mel-mouk          #+#    #+#             */
+/*   Updated: 2014/12/24 19:21:57 by mel-mouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_swap(int *i, int *y)
 {
-	char	*d;
-	char	*s;
-	size_t	i;
+	int tmp;
 
-	if (dest && src)
-	{
-		i = 0;
-		d = (char*)dest;
-		s = (char*)src;
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	}
-	return ((void*)d);
+	tmp = *y;
+	*y = *i;
+	*i = tmp;
 }

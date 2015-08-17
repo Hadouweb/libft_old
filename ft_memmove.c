@@ -1,37 +1,33 @@
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/23 19:10:29 by mel-mouk          #+#    #+#             */
+/*   Updated: 2014/12/23 19:11:14 by mel-mouk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    *ft_memmove(void *dest, const void *src, size_t n)
+#include "libft.h"
+
+static char	*ft_move(char *dest, const char *src, size_t n)
 {
-    char    *d;
-    char    *s;
-    size_t  i;
-
-    i = 0;
-    d = (char *)dest;
-    if ((s = (char *)malloc(strlen(src) * sizeof(char))) == NULL)
-        return (NULL);
-    s = (char *)src;
-    if (dest && src)
-    {
-        while (i < n)
-        {
-            d[i] = s[i];
-            i++;    
-        }
-    }
-    return ((void *)d);
+	while (n > 0)
+	{
+		dest[n - 1] = src[n - 1];
+		n--;
+	}
+	return (dest);
 }
 
-int     main(void)
+void		*ft_memmove(void *dest, const void *src, size_t n)
 {
-    char dest[] = "oldstring_";
-    const char src[]  = "newstring_";
+	char *s;
+	char *d;
 
-    printf("Before memmove dest = %s, src = %s\n", dest, src);
-    ft_memmove(dest, src, 9);
-    printf("After memmove dest = %s, src = %s\n", dest, src);
-
-    return(0);
+	s = ft_strdup((char*)src);
+	d = (char*)dest;
+	return ((void*)ft_move(d, s, n));
 }

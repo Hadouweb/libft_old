@@ -1,30 +1,18 @@
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/12/23 17:04:44 by mel-mouk          #+#    #+#             */
+/*   Updated: 2014/12/23 18:31:39 by mel-mouk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    ft_bzero(void *s, size_t n)
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-    unsigned char   *str;
-    size_t          i;
-
-    str = (unsigned char*)s;
-    if (s)
-    {
-        i = 0;
-        while (i < n)
-        {
-            str[i] = '\0';
-            i++;
-        }
-    }
-}
-
-int     main(void)
-{
-    char    *str;
-
-    str = (char *)malloc(41 * sizeof(char));
-    ft_bzero(str, 30);
-    printf("ok %s", str);
-    return (0);
+	s = ft_memset(s, '\0', n);
 }

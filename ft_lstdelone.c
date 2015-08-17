@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-mouk <mel-mouk@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/23 17:45:18 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/23 17:47:51 by mel-mouk         ###   ########.fr       */
+/*   Created: 2014/12/24 14:17:52 by mel-mouk          #+#    #+#             */
+/*   Updated: 2014/12/24 14:24:31 by mel-mouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	char	*d;
-	char	*s;
-	size_t	i;
-
-	if (dest && src)
+	if (alst)
 	{
-		i = 0;
-		d = (char*)dest;
-		s = (char*)src;
-		while (i < n)
+		if (*alst && *del)
 		{
-			d[i] = s[i];
-			i++;
+			if ((*alst)->content && (*alst)->content_size)
+				del((*alst)->content, (*alst)->content_size);
+			free(*alst);
+			*alst = NULL;
 		}
 	}
-	return ((void*)d);
 }

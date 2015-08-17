@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_sortinttab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-mouk <mel-mouk@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/23 17:45:18 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/23 17:47:51 by mel-mouk         ###   ########.fr       */
+/*   Created: 2014/12/24 19:02:06 by mel-mouk          #+#    #+#             */
+/*   Updated: 2014/12/24 19:22:34 by mel-mouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int *ft_sortinttab(int *tab, int size)
 {
-	char	*d;
-	char	*s;
-	size_t	i;
+	int i;
+	int y;
 
-	if (dest && src)
+	i = 0;
+	while (i < size)
 	{
-		i = 0;
-		d = (char*)dest;
-		s = (char*)src;
-		while (i < n)
+		y = 0;
+		while (y < size - 1)
 		{
-			d[i] = s[i];
-			i++;
+			if (tab[y] > tab[y + 1])
+				ft_swap(&tab[y], &tab[y + 1]);
+			y++;
 		}
+		i++;
 	}
-	return ((void*)d);
+	return (tab);
 }

@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstaddback.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mel-mouk <mel-mouk@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/23 17:45:18 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/23 17:47:51 by mel-mouk         ###   ########.fr       */
+/*   Created: 2014/12/24 18:03:04 by mel-mouk          #+#    #+#             */
+/*   Updated: 2014/12/24 18:14:17 by mel-mouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_lstaddback(t_list **alst, t_list *new)
 {
-	char	*d;
-	char	*s;
-	size_t	i;
+	t_list *tmp;
 
-	if (dest && src)
+	tmp = *alst;
+	while (tmp->next)
 	{
-		i = 0;
-		d = (char*)dest;
-		s = (char*)src;
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
+		tmp = tmp->next;
 	}
-	return ((void*)d);
+	tmp->next = new;
 }

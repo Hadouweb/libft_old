@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/23 18:55:46 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/23 18:57:02 by mel-mouk         ###   ########.fr       */
+/*   Created: 2014/12/24 00:07:29 by mel-mouk          #+#    #+#             */
+/*   Updated: 2014/12/24 00:09:25 by mel-mouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-    unsigned char   *str1;
-    unsigned char   *str2;
-    size_t          i;
+	int		i;
+	char	*str;
 
-    i = 0;
-    str1 = (unsigned char *)s1;
-    str2 = (unsigned char *)s2;
-
-    while(i < n && str1[i] == str2[i])
-        i++;
-    return (str1[i] - str2[i]);
+	if (s1 || s2)
+	{
+		i = ft_strlen(s1) + ft_strlen(s2);
+		str = ft_strnew(i);
+		if (s1)
+			ft_strcpy(str, s1);
+		if (s2)
+		ft_strcpy((str + ft_strlen(s1)), s2);
+		return (str);
+	}
+	return (NULL);
 }

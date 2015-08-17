@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/23 18:55:46 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/23 18:57:02 by mel-mouk         ###   ########.fr       */
+/*   Created: 2014/12/24 00:06:02 by mel-mouk          #+#    #+#             */
+/*   Updated: 2014/12/24 00:06:50 by mel-mouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-    unsigned char   *str1;
-    unsigned char   *str2;
-    size_t          i;
+	char *str;
 
-    i = 0;
-    str1 = (unsigned char *)s1;
-    str2 = (unsigned char *)s2;
-
-    while(i < n && str1[i] == str2[i])
-        i++;
-    return (str1[i] - str2[i]);
+	if (!(str = ft_strnew(len + 1)))
+		return (NULL);
+	str = ft_strncpy(str, s + start, len);
+	str[len] = '\0';
+	return (str);
 }
