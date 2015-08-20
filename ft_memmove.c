@@ -8,9 +8,9 @@ void    *ft_memmove(void *dest, const void *src, size_t n)
 
     i = 0;
     d = (char *)dest;
-    if ((s = (char *)malloc(strlen(src) * sizeof(char))) == NULL)
+    if ((s = (char *)malloc(ft_strlen(src) * sizeof(char))) == NULL)
         return (NULL);
-    s = (char *)src;
+    s = ft_strcpy(s, (char *)src);
     if (dest && src)
     {
         while (i < n)
