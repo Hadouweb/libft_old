@@ -1,20 +1,22 @@
-#include <string.h>
-#include <stdlib.h>
 #include "libft.h"
 
 char    *ft_strdup(const char *s)
 {
-    char    *str;
     size_t  i;
+    char    *str;
 
-    i = 0;
-    if ((str = (char *)malloc(ft_strlen(s) * sizeof(char) + 1)) == NULL)
-        return (NULL);
-    while (s[i])
+    if (s)
     {
-        str[i] = s[i];
-        i++;
+        if ((str = (char *)malloc(ft_strlen(s) * sizeof(*str) + 1)) == NULL)
+            return (NULL);
+        i = 0;
+        while (s[i])
+        {
+            str[i] = s[i];
+            i++;
+        }
+        str[i] = '\0';
+        return (str);
     }
-    str[i] = '\0';
-    return (str);
+    return (NULL);
 }
