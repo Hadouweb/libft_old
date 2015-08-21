@@ -1,60 +1,58 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/24 00:23:50 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/24 00:25:13 by mel-mouk         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-static char		*is_zero(char *s)
+int     ft_intlen(int n)
 {
-	s[0] = '0';
-	s[1] = '\0';
-	return (s);
+    size_t  i;
+
+    i = 0;
+    if (n < 0)
+    {
+        i++;
+        n *= -1;
+    }
+    while (n > 0)
+    {
+        n /= 10;
+        i++;
+    }
+    return (i);
 }
 
-static long int	is_negative(char *s, int *y, long int n)
+char    *ft_itoa(int n)
 {
-	if (n < 0)
-	{
-		s[0] = '-';
-		*y = 1;
-		return (n * -1);
-	}
-	return (n);
+    char    *str;
+    size_t  i;
+
+    i = ft_intlen(n);
+    printf("i %zu\n", i);
+    if (n == 0)
+        return ("0");
+    if ((str = (char *)malloc(i * sizeof(char) + 1)) == NULL)
+        return (NULL);
+    if (n < 0)
+    {
+        str[0] = '-';
+        n *= -1;
+    }
+    while (i > 0)
+    {
+        str[i - 1] = n % 10 + '0';
+        printf("%zu %c\n", i, str[i]);
+        n /= 10;
+        i--;
+    }
+    return (str);
 }
 
-char			*ft_itoa(int n)
+int     main(int argc, char **argv)
 {
-	long int	nb;
-	int			i;
-	int			y;
-	char		tab[12];
-	char		*result;
-
-	nb = (long int)n;
-	result = (char*)malloc(sizeof(char*) * 12);
-	y = 0;
-	nb = is_negative(result, &y, nb);
-	if (n == 0)
-		return (is_zero(result));
-	else
-	{
-		i = 0;
-		while (nb != 0)
-		{
-			tab[i++] = nb % 10 + '0';
-			nb = nb / 10;
-		}
-		while (i-- > 0)
-			result[y++] = tab[i];
-	}
-	result[y] = '\0';
-	return (result);
+    int     n;
+    if (argc > 1)
+    {
+        n = ft_atoi(argv[1]);
+        printf("rep : %s\n", ft_itoa(n));
+    }
+    return (0);
 }
