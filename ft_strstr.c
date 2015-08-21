@@ -1,40 +1,28 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/23 18:39:12 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/23 18:47:14 by mel-mouk         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-char	*ft_strstr(const char *haystack, const char *needle)
+char    *ft_strstr(const char *s1, const char *s2)
 {
-	int i;
-	int y;
+    size_t  i;
+    size_t  j;
 
-	i = 0;
-	y = 0;
-	if (needle[0] == '\0')
-		return ((char *)haystack);
-	while (haystack[i] != '\0')
-	{
-		if (haystack[i] == needle[y])
-		{
-			while (haystack[i] == needle[y] && needle[y] != '\0')
-			{
-				i++, y++;
-			}
-			if (needle[y] == '\0')
-				return ((char*)(haystack + i - y));
-			i = i - y + 1;
-			y = 0;
-		}
-		i++;
-	}
-	return (NULL);
+    i = 0;
+    if (!s2[0])
+        return ((char *)s1);
+    while (s1[i])
+    {
+        j = 0;
+        if (s2[j] == s1[i])
+        {
+            while (s2[j] == s1[i] && s2[j])
+            {
+                i++;
+                j++;
+            }
+            if (s2[j] == '\0')
+                return ((char *)s1 + i - j);
+            i = i - (j - 1);
+        }
+        i++;
+    }
+    return (NULL);
 }
