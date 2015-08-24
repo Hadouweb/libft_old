@@ -1,42 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/24 00:46:15 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/24 00:47:33 by mel-mouk         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void    ft_putnbr_fd(int n, int fd)
 {
-	int		b;
-	int		i;
-	int		test[11];
-	long	nb;
-
-	nb = (long)n;
-	if (nb < 0)
-	{
-		ft_putchar_fd('-', fd);
-		nb = nb * -1;
-	}
-	i = 0;
-	if (nb == 0)
-		ft_putchar_fd('0', fd);
-	while (nb != 0)
-	{
-		b = nb % 10;
-		nb = nb / 10;
-		test[i++] = b;
-	}
-	while (i > 0)
-	{
-		i--;
-		ft_putchar_fd(test[i] + 48, fd);
-	}
+    if (n < 0)
+    {
+        ft_putchar_fd('-', fd);
+        if (n <= -10)
+            ft_putnbr_fd(n / 10 * -1, fd);
+        ft_putchar_fd(n % 10 * -1 + '0', fd);
+    }
+    else
+    {
+        if (n >= 10)
+            ft_putnbr_fd(n / 10, fd);
+        ft_putchar_fd(n % 10 + '0', fd);
+    }
 }
