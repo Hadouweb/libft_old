@@ -1,21 +1,13 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/24 00:26:18 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/24 00:28:39 by mel-mouk         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-void	ft_putstr(const char *s)
+void    ft_putstr(char const *s)
 {
-	if (s)
-		write(1, s, ft_strlen(s));
-	else
-		write(1, "(null)", 7);
+    size_t  i;
+
+    i = 0;
+    while (s[i])
+    {
+        ft_putchar(s[i]);
+        i++;
+    }
 }
