@@ -1,19 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/24 00:42:56 by mel-mouk          #+#    #+#             */
-/*   Updated: 2014/12/24 00:50:04 by mel-mouk         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-void	ft_putendl_fd(const char *s, int fd)
+void    ft_putendl_fd(char const *s, int fd)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+    size_t  i;
+
+    i = 0;
+    while (s[i])
+    {
+        ft_putchar_fd(s[i], fd);
+        i++;
+    }
+    ft_putchar_fd('\n', fd);
 }
