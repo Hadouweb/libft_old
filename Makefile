@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mel-mouk <mel-mouk@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/12/23 15:37:50 by mel-mouk          #+#    #+#              #
-#    Updated: 2015/01/11 21:37:34 by mel-mouk         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libft.a
 SRC = ft_memset.c\
 	  ft_bzero.c\
@@ -62,19 +50,7 @@ SRC = ft_memset.c\
 	  ft_putchar_fd.c\
 	  ft_putstr_fd.c\
 	  ft_putendl_fd.c\
-	  ft_putnbr_fd.c\
-	  ft_lstnew.c\
-	  ft_lstdelone.c\
-	  ft_lstdel.c\
-	  ft_lstadd.c\
-	  ft_lstiter.c\
-	  ft_lstmap.c\
-	  ft_lstaddback.c\
-	  ft_putendl_nb.c\
-	  ft_puttab.c\
-	  ft_swap.c\
-	  ft_sortinttab.c\
-	  ft_putunbr.c
+	  ft_putnbr_fd.c
 OBJ = $(SRC:.c=.o)
 FLAG = -Wall -Werror -Wextra
 
