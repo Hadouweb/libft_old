@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int     ft_count_word(char const *s, char c)
+static int  ft_count_word(char const *s, char c)
 {
     size_t  i;
     size_t  count;
@@ -25,7 +25,7 @@ int     ft_count_word(char const *s, char c)
     return (count);
 }
 
-int     ft_strlen_split(char const *s, char c)
+static int  ft_strlen_split(char const *s, char c)
 {
     size_t  i;
 
@@ -35,7 +35,7 @@ int     ft_strlen_split(char const *s, char c)
     return (i);
 }
 
-char    *ft_subtab(char const *s, char c, size_t k)
+static char *ft_subtab(char const *s, char c, size_t k)
 {
     size_t  j;
     size_t  size_word;
@@ -53,7 +53,7 @@ char    *ft_subtab(char const *s, char c, size_t k)
     return (str);
 }
 
-char    **ft_strsplit(char const *s, char c)
+char        **ft_strsplit(char const *s, char c)
 {
     char    **str;
     size_t  nb_word;

@@ -5,7 +5,7 @@
 # include <unistd.h>
 
 /*
-** Partie 1 :
+** Part 1 :
 */
 void			*ft_memset(void *s, int c, size_t n);
 void			ft_bzero(void *s, size_t n);
@@ -35,8 +35,9 @@ int				ft_isascii(int c);
 int				ft_isprint(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
+
 /*
-** Partie 2 :
+** Part 2 :
 */
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void	**ap);
@@ -62,5 +63,23 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(const char *s, int fd);
 void			ft_putendl_fd(const char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
+
+/*
+** Part Bonus :
+*/
+typedef struct  s_list
+{
+    void        *content;
+    size_t      content_size;
+    struct      s_list *next;
+}               t_list;
+
+t_list          *ft_lstnew(void const *content, size_t content_size);
+void            ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void            ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void            ft_lstadd(t_list **alst, t_list *new);
+void            ft_lstpush(t_list **alst, t_list *new);
+void            ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list          *ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 #endif
