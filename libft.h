@@ -82,4 +82,9 @@ void            ft_lstpush(t_list **alst, t_list *new);
 void            ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list          *ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+/*
+** Part Bonus 2 :
+*/
+void            ft_printbit(unsigned char octet);
+
 #endif
