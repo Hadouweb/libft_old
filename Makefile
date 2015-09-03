@@ -57,7 +57,9 @@ SRC = ft_memset.c\
 	  ft_lstadd.c\
 	  ft_lstiter.c\
 	  ft_lstmap.c\
-	  ft_printbit.c
+	  ft_printbit.c\
+	  ft_reversebit.c\
+	  ft_itoa_base.c
 OBJ = $(SRC:.c=.o)
 	FLAG = -Wall -Werror -Wextra
 

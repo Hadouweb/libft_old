@@ -86,5 +86,6 @@ t_list          *ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 ** Part Bonus 2 :
 */
 void            ft_printbit(unsigned char octet);
-
+unsigned char   ft_reversebit(unsigned char cotet);
+char            *ft_itoa_base(int n, int base);
 #endif
