@@ -89,5 +89,6 @@ void            ft_printbit(unsigned char octet);
 unsigned char   ft_reversebit(unsigned char cotet);
 char            *ft_itoa_base(int n, int base);
 void            ft_putnbr_base(int n, int base);
+void            ft_lstpush_front(t_list **lst, void const *c, size_t s);
 
 #endif

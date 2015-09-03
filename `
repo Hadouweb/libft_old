@@ -1,0 +1,33 @@
+#include "libft.h"
+#include <stdio.h>
+
+void    ft_lstpush_front(t_list **l, void const *c, size_t s)
+{
+    t_list  *list;
+    t_list  *new;
+
+    list = *l;
+    if (list)
+    {
+        new = ft_lstnew(c, s);
+        new->next = list;
+        *l = new;
+    }
+    else
+        *l = ft_lstnew(c, s);
+}
+
+int     main(void)
+{
+    t_list  *list;
+
+    list = NULL;
+    ft_lstpush_front(&list, "test1", 5);
+    ft_lstpush_front(&list, "test2", 5);
+    ft_lstpush_front(&list, "test3", 5);
+
+        printf("ok : %s\n", list->content);
+        list = list->next;
+        printf("ok : %s\n", list->content);
+        list = list->next;
+}
