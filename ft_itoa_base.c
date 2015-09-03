@@ -42,6 +42,5 @@ char        *ft_itoa_base(int n, int base)
         str[size--] = n % base * sign + c;
         n /= base;
     }
-    printf("%s\n", str);
     return (str);
 }
