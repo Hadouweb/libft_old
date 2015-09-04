@@ -63,7 +63,8 @@ SRC = ft_memset.c\
 	  ft_putnbr_base.c\
 	  ft_lstpush_front.c\
 	  ft_lstpush_back.c\
-	  ft_lstsize.c
+	  ft_lstsize.c\
+	  ft_lsttotab.c
 OBJ = $(SRC:.c=.o)
 	FLAG = -Wall -Werror -Wextra
 
