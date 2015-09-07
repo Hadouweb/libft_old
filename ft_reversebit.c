@@ -2,22 +2,19 @@
 
 unsigned char    ft_reversebit(unsigned char octet)
 {
-    unsigned char   i;
-    unsigned char   j;
-    unsigned char   k;
-    unsigned char   tmp;
+    unsigned char   read;
+    unsigned char   write;
+    unsigned char   result;
 
-    i = 0;
-    j = 0x00;
-    k = 0x80;
-    tmp = 0;
-    while (i < 4)
+    read = 1;
+    write = 128;
+    result = 0;
+    while (read)
     {
-        tmp = tmp | (octet & k);
-        octet = octet | (tmp & j);
-        j >>= 1;
-        k <<= 1;
-        i++;
+        if (octet & read)
+            result |= write;
+        read <<= 1;
+        write >>= 1;
     }
-    return (octet);
+    return (result);
 }
