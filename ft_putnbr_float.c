@@ -56,6 +56,7 @@ unsigned int    ft_get_right(unsigned int mant, int exp, int left, float n)
     unsigned int    rep;
     unsigned int    j;
     unsigned int    k;
+    float    tmp;
     
     right = mant;
     i = 22;
@@ -72,7 +73,9 @@ unsigned int    ft_get_right(unsigned int mant, int exp, int left, float n)
     {
         if ((right >> j) & 1)
         {
-            rep += 1.0/k * 1000000;
+            tmp = 1.0/k * 1000000000;
+            printf("%f\n", tmp);
+            rep += tmp;
         }
         k *= 2;
         j--;
@@ -113,6 +116,7 @@ void            ft_putnbr_float(float n)
 
 int             main(void)
 {
-    ft_putnbr_float(10.1234);
+    ft_putnbr_float(10.123);
+    printf("\n%.10f\n", 10.12300001);
     return (0);
 }
