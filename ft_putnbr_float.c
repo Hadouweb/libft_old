@@ -28,10 +28,12 @@ int             ft_pow(int a, int b)
 
 unsigned int    ft_get_left(unsigned int value, int size, int max)
 {
-    int i;
-    unsigned int left;
-    unsigned int exp;
+    int             i;
+    unsigned int    left;
+    unsigned int    exp;
 
+    if (max < 0)
+        return (0);
     i = size - 1;
     left = 0;
     exp = max;
@@ -43,57 +45,64 @@ unsigned int    ft_get_left(unsigned int value, int size, int max)
         left <<= 1;
     }
     left = left >> 1;
-    //left += ft_pow(2,exp);
+    left += ft_pow(2,exp);
     return (left);
 }
 
-unsigned int    ft_get_right(unsigned int value, int exp, int left, float n){
-    int i;
-    unsigned int right;
-    unsigned int    *p;
-
-    ft_print_bit(n, 32);
-    i = 23;
-    right = 0;
-    value = ((value & 0x7fffff) << exp) & 0x7fffff;
-    value = value >> exp;
-    p = (unsigned int *)&n;
-    *p &= 0xff800000;
-    ft_print_bit(value, 32);
-    *p |= value;
-    ft_print_bit(*p, 32);
-    n *= 1000000;
-    left = ft_get_left(n, 23, exp);
-    ft_putnbr(left);
-    while (i > 0)
+unsigned int    ft_get_right(unsigned int mant, int exp, int left, float n)
+{
+    unsigned int    right;
+    unsigned int    i;
+    unsigned int    rep;
+    unsigned int    j;
+    unsigned int    k;
+    
+    right = mant;
+    i = 22;
+    while (exp > 0)
     {
-        i--;
-        right = right | (value >> i);
+        right &= ~(1 << i);
         right <<= 1;
+        i--;
+        exp--;
     }
-    return (right);
+    j = 22;
+    k = 2;
+    while (j > 0)
+    {
+        if ((right >> j) & 1)
+        {
+            rep += 1.0/k * 1000000;
+        }
+        k *= 2;
+        j--;
+    }
+    printf("%u\n", rep);
+    ft_print_bit(right, 23);
+    
+    return (rep);
 }
 
 void            ft_putnbr_float(float n)
 {
-    unsigned int    i;
+    unsigned int    f;
     unsigned int    mant;
     unsigned int    sign;
     unsigned int    exp;
     int             left;
     int             right;
 
-    i = *(unsigned int *) &n;
-    sign = i >> 31;
-    exp = (i >> 23) & 0xff;
-    mant = i & 0x7fffff;
+    f = *(unsigned int *) &n;
+    sign = f >> 31;
+    exp = (f >> 23) & 0xff;
+    mant = f & 0x7fffff;
 
     printf("Exp : %d\n", exp - 127);
-    printf("Mant : ");
+    printf("Mant : \n");
     ft_print_bit(mant, 23);
 
     left = ft_get_left(mant, 23, (exp - 127));
-    right = ft_get_right(mant, (exp - 127), left, i);
+    right = ft_get_right(mant, (exp - 127), left, f);
 
     if (sign)
       ft_putchar('-');
@@ -104,6 +113,6 @@ void            ft_putnbr_float(float n)
 
 int             main(void)
 {
-    ft_putnbr_float(123.125);
+    ft_putnbr_float(10.1234);
     return (0);
 }
